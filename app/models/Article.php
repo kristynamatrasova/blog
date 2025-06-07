@@ -19,4 +19,8 @@ class Article extends Model {
     public static function delete($id) {
         self::execute("DELETE FROM articles WHERE id = ?", [$id]);
     }
+    public static function findByUser($user_id) {
+    return self::query("SELECT * FROM articles WHERE user_id = ? ORDER BY created_at DESC", [$user_id]);
+}
+
 }

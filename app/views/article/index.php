@@ -1,13 +1,38 @@
 <?php $viewPath = __FILE__; ?>
-<h1>Nejnovější příspěvky</h1>
+<h1>Bioinformatický portál</h1>
+
+<section class="static-list">
+  <h2>Statické články</h2>
+  <article>
+    <h3><a href="<?= BASE_URL ?>index.php?url=page/stat1">Úvod do bioinformatiky</a></h3>
+    <p>Základní přehled o tom, co je bioinformatika a proč je důležitá...</p>
+  </article>
+
+  <article>
+    <h3><a href="<?= BASE_URL ?>index.php?url=page/stat2">Sekvenování DNA</a></h3>
+    <p>Jak se získávají genetická data a jak je bioinformatika zpracovává...</p>
+  </article>
+
+  <article>
+    <h3><a href="<?= BASE_URL ?>index.php?url=page/stat3">Proteinová struktura</a></h3>
+    <p>Přehled přístupů k predikci a modelování proteinů...</p>
+  </article>
+
+  <article>
+    <h3><a href="<?= BASE_URL ?>index.php?url=page/stat4">Nástroje v bioinformatice</a></h3>
+    <p>Přehled běžně používaných nástrojů a databází...</p>
+  </article>
+</section>
+
+<hr>
+
+<h2>Nejnovější příspěvky</h2>
 
 <?php foreach ($articles as $article): ?>
-    <article style="margin-bottom: 30px;">
-        <h2>
-            <a href="/blog/public/index.php?url=article/detail/<?= $article['id'] ?>">
-                <?= htmlspecialchars($article['title']) ?>
-            </a>
-        </h2>
-        <p><small>Autor: <?= htmlspecialchars($article['username']) ?> | <?= $article['created_at'] ?></small></p>
-    </article>
+  <article>
+    <h3><a href="<?= BASE_URL ?>index.php?url=article/detail/<?= $article['id'] ?>">
+      <?= htmlspecialchars($article['title']) ?>
+    </a></h3>
+    <p><small>Autor: <?= htmlspecialchars($article['username']) ?> | <?= $article['created_at'] ?></small></p>
+  </article>
 <?php endforeach; ?>
