@@ -41,13 +41,13 @@ foreach ($comments as $comment): ?>
 
 <!-- Formulář pro přidání komentáře -->
 <?php if (isset($_SESSION['user'])): ?>
-    <div class="form-box" style="margin-top: 30px;">
-        <h4>Napiš komentář</h4>
-        <form method="post" action="<?= BASE_URL ?>index.php?url=comment/create/<?= $article['id'] ?>">
-            <textarea name="content" rows="5" placeholder="Napiš komentář..." required></textarea>
-            <button type="submit">Přidat komentář</button>
-        </form>
-    </div>
+    <div class="comment-form">
+    <h4>Napiš komentář</h4>
+    <form method="post" action="<?= BASE_URL ?>index.php?url=comment/create/<?= $article['id'] ?>">
+        <textarea name="content" rows="5" placeholder="Napiš komentář..." required></textarea>
+        <button type="submit">Přidat komentář</button>
+    </form>
+</div>
 <?php else: ?>
     <p><a href="<?= BASE_URL ?>index.php?url=auth/login">Přihlas se</a>, abys mohl komentovat.</p>
 <?php endif; ?>

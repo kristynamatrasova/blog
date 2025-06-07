@@ -36,7 +36,7 @@
   <aside class="sidebar">
   <h3>Menu</h3>
   <ul>
-    <li><a href="<?= BASE_URL ?>index.php?url=article/index">Všechny příspěvky</a></li>
+    <li><a href="<?= BASE_URL ?>index.php?url=article/userPosts">Všechny příspěvky</a></li>
     <?php if (isset($_SESSION['user'])): ?>
       <li><a href="<?= BASE_URL ?>index.php?url=user/profile">Můj profil</a></li>
       <li><a href="<?= BASE_URL ?>index.php?url=user/myPosts">Moje příspěvky</a></li>

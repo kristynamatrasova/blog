@@ -204,3 +204,37 @@ a:active {
     color: #aaa;
     font-size: 13px;
 }
+.comment-form {
+    background-color: #1c1c3d;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 30px;
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #2a2a4f;
+    color: #fff;
+    border: none;
+    margin-bottom: 15px;
+}
+
+.comment-form button {
+    background-color: #3388ff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.comment-form button:hover {
+    background-color: #1f6edb;
+}

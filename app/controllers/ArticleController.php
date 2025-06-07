@@ -76,4 +76,11 @@ class ArticleController extends Controller {
 
         header("Location: /blog/public/index.php?url=article/index");
     }
+
+    public function userPosts() {
+    $articles = Article::findAllUserArticles();
+    $this->view('article/user_posts', ['articles' => $articles]);
+}
+
+
 }

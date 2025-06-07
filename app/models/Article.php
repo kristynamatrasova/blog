@@ -27,4 +27,15 @@ class Article extends Model {
     return self::query("SELECT * FROM articles WHERE user_id = ? ORDER BY created_at DESC", [$user_id]);
 }
 
+public static function findAllUserArticles() {
+    return self::query("
+        SELECT a.*, u.username 
+        FROM articles a 
+        JOIN users u ON a.user_id = u.id
+        WHERE u.role = 'user'
+        ORDER BY a.created_at DESC
+    ");
+}
+
+
 }
