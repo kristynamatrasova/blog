@@ -1,30 +1,37 @@
 <?php
 class AuthController extends Controller {
+    public function register() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+            
+            User::create($username, $email, $password);
+            header('Location: /blog/public/index.php?url=auth/login');
+            exit;
+        }
+
+        $this->view('auth/register');
+    }
+
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = User::findByUsername($_POST['username']);
+
             if ($user && password_verify($_POST['password'], $user['password'])) {
                 $_SESSION['user'] = $user;
-                header('Location: /article/index');
+                header('Location: /blog/public/index.php?url=article/index');
                 exit;
+            } else {
+                echo "Nesprávné přihlašovací údaje.";
             }
-            $error = "Neplatné přihlašovací údaje.";
         }
-        require 'app/views/auth/login.php';
+
+        $this->view('auth/login');
     }
 
     public function logout() {
         session_destroy();
-        header('Location: /auth/login');
-    }
-
-    public function register() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
-            User::create($_POST['username'], $_POST['email'], $hash);
-            header('Location: /auth/login');
-            exit;
-        }
-        require 'app/views/auth/register.php';
+        header('Location: /blog/public/index.php?url=auth/login');
     }
 }

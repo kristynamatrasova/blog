@@ -5,7 +5,7 @@ class Article extends Model {
     }
 
     public static function find($id) {
-        return self::queryOne("SELECT * FROM articles WHERE id = ?", [$id]);
+        return self::queryOne("SELECT a.*, u.username FROM articles a JOIN users u ON a.user_id = u.id WHERE a.id = ?", [$id]);
     }
 
     public static function create($user_id, $title, $content) {
