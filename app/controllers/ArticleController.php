@@ -19,19 +19,28 @@ class ArticleController extends Controller {
 
     // Vytvoření nového článku
     public function create() {
-        if (!isset($_SESSION['user'])) {
-            header("Location: /blog/public/index.php?url=auth/login");
-            exit;
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            Article::create($_SESSION['user']['id'], $_POST['title'], $_POST['content']);
-            header("Location: /blog/public/index.php?url=article/index");
-            exit;
-        }
-
-        $this->view('article/create');
+    if (!isset($_SESSION['user'])) {
+        header("Location: " . BASE_URL . "index.php?url=auth/login");
+        exit;
     }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $title = trim($_POST['title']);
+        $content = trim($_POST['content']);
+
+        if (empty($title) || empty($content)) {
+            die("Název a obsah jsou povinné.");
+        }
+
+        Article::create($title, $content, $_SESSION['user']['id']);
+
+        header("Location: " . BASE_URL . "index.php?url=article/index");
+        exit;
+    }
+
+    $this->view('article/create');
+}
+
 
     // Úprava článku
     public function edit($id) {

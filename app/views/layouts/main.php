@@ -8,7 +8,7 @@
 <body>
 
 <header class="top-bar">
-  <div class="container">
+  <div class="container top-bar-inner">
     <div class="logo">
       <a href="<?= BASE_URL ?>index.php">
         <img src="<?= BASE_URL ?>img/logo.png" alt="Logo" class="logo-img">
@@ -17,17 +17,18 @@
     </div>
 
     <nav class="main-nav">
-      <ul>
-        <li><a href="<?= BASE_URL ?>index.php?url=article/index">Domů</a></li>
-        <?php if (isset($_SESSION['user'])): ?>
-          <li><a href="<?= BASE_URL ?>index.php?url=article/create">Přidat článek</a></li>
-          <li><a href="<?= BASE_URL ?>index.php?url=auth/logout">Odhlásit se (<?= htmlspecialchars($_SESSION['user']['username']) ?>)</a></li>
-        <?php else: ?>
-          <li><a href="<?= BASE_URL ?>index.php?url=auth/login">Přihlásit se</a></li>
-          <li><a href="<?= BASE_URL ?>index.php?url=auth/register">Registrovat</a></li>
-        <?php endif; ?>
-      </ul>
-    </nav>
+  <ul class="nav-right">
+    <li><a href="<?= BASE_URL ?>index.php?url=article/index">Domů</a></li>
+    <?php if (isset($_SESSION['user'])): ?>
+      <li><a href="<?= BASE_URL ?>index.php?url=article/create">Přidat příspěvek</a></li>
+      <li><a href="<?= BASE_URL ?>index.php?url=auth/logout">Odhlásit se (<?= htmlspecialchars($_SESSION['user']['username']) ?>)</a></li>
+    <?php else: ?>
+      <li><a href="<?= BASE_URL ?>index.php?url=auth/login">Přihlásit se</a></li>
+      <li><a href="<?= BASE_URL ?>index.php?url=auth/register">Registrovat</a></li>
+    <?php endif; ?>
+  </ul>
+</nav>
+
   </div>
 </header>
 

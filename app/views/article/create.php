@@ -1,12 +1,14 @@
 <?php $viewPath = __FILE__; ?>
-<h2>Přidat nový článek</h2>
+<div class="form-box">
+    <h2>Přidat nový článek</h2>
 
-<form method="post">
-    <label>Název článku:</label><br>
-    <input type="text" name="title" required><br><br>
+    <form method="post">
+        <label for="title">Název článku</label>
+        <input type="text" name="title" id="title" required>
 
-    <label>Obsah:</label><br>
-    <textarea name="content" rows="10" cols="80" required></textarea><br><br>
+        <label for="content">Obsah</label>
+        <textarea name="content" id="content" rows="10" required></textarea>
 
-    <button type="submit">Publikovat</button>
-</form>
+        <button type="submit">Publikovat</button>
+    </form>
+</div>

@@ -8,9 +8,13 @@ class Article extends Model {
         return self::queryOne("SELECT a.*, u.username FROM articles a JOIN users u ON a.user_id = u.id WHERE a.id = ?", [$id]);
     }
 
-    public static function create($user_id, $title, $content) {
-        self::execute("INSERT INTO articles (user_id, title, content) VALUES (?, ?, ?)", [$user_id, $title, $content]);
-    }
+   public static function create($title, $content, $userId) {
+    self::execute(
+        "INSERT INTO articles (title, content, user_id) VALUES (?, ?, ?)",
+        [$title, $content, $userId]
+    );
+}
+
 
     public static function update($id, $title, $content) {
         self::execute("UPDATE articles SET title = ?, content = ?, updated_at = NOW() WHERE id = ?", [$title, $content, $id]);

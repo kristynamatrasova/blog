@@ -2,7 +2,7 @@
 <h1>Bioinformatický portál</h1>
 
 <section class="static-list">
-  <h2>Statické články</h2>
+  <h2>Články</h2>
   <article>
     <h3><a href="<?= BASE_URL ?>index.php?url=page/stat1">Úvod do bioinformatiky</a></h3>
     <p>Základní přehled o tom, co je bioinformatika a proč je důležitá...</p>
@@ -29,10 +29,12 @@
 <h2>Nejnovější příspěvky</h2>
 
 <?php foreach ($articles as $article): ?>
-  <article>
-    <h3><a href="<?= BASE_URL ?>index.php?url=article/detail/<?= $article['id'] ?>">
-      <?= htmlspecialchars($article['title']) ?>
-    </a></h3>
-    <p><small>Autor: <?= htmlspecialchars($article['username']) ?> | <?= $article['created_at'] ?></small></p>
-  </article>
+    <div class="article-preview">
+        <h3>
+            <a href="<?= BASE_URL ?>index.php?url=article/detail/<?= $article['id'] ?>">
+                <?= htmlspecialchars($article['title']) ?>
+            </a>
+        </h3>
+        <p><small>Autor: <?= htmlspecialchars($article['username']) ?> | <?= $article['created_at'] ?></small></p>
+    </div>
 <?php endforeach; ?>

@@ -23,5 +23,18 @@ class Comment extends Model {
     ", [$user_id]);
 }
 
+public static function findById($id) {
+    return self::queryOne("SELECT * FROM comments WHERE id = ?", [$id]);
+}
+
+public static function update($id, $content) {
+    self::execute("UPDATE comments SET content = ? WHERE id = ?", [$content, $id]);
+}
+
+public static function delete($id) {
+    self::execute("DELETE FROM comments WHERE id = ?", [$id]);
+}
+
+
 }
 
