@@ -2,11 +2,11 @@
 
 <!-- Zobrazení jednoho článku -->
 <div class="article-full">
-    <h2><?= htmlspecialchars($article['title']) ?></h2>
+    <h2><?= htmlspecialchars($article['title']) ?></h2> <!-- titulek -->
     <p><small>Autor: <?= htmlspecialchars($article['username']) ?> | <?= $article['created_at'] ?></small></p>
-    <p><?= nl2br(htmlspecialchars($article['content'])) ?></p>
+    <p><?= nl2br(htmlspecialchars($article['content'])) ?></p> <!-- obsah -->
 
-    <?php if (isset($_SESSION['user']) && ($_SESSION['user']['id'] === $article['user_id'] || $_SESSION['user']['role'] === 'admin')): ?>
+    <?php if (isset($_SESSION['user']) && ($_SESSION['user']['id'] === $article['user_id'] || $_SESSION['user']['role'] === 'admin')): ?> <!-- úprava a mazání pro autora nebo admina, odkazy -->
         <p>
             <a href="<?= BASE_URL ?>index.php?url=article/edit/<?= $article['id'] ?>">🖊️ Upravit</a> |
             <a href="<?= BASE_URL ?>index.php?url=article/delete/<?= $article['id'] ?>" onclick="return confirm('Opravdu smazat tento článek?')">❌ Smazat</a>
@@ -20,13 +20,15 @@
 <h3>Komentáře</h3>
 
 <?php
+//načtení komentářů k článku z databáze
 $comments = Comment::findByArticle($article['id']);
 foreach ($comments as $comment): ?>
     <div class="comment-box">
-        <strong><?= htmlspecialchars($comment['username']) ?></strong><br>
-        <?= nl2br(htmlspecialchars($comment['content'])) ?><br>
-        <small><?= $comment['created_at'] ?></small>
+        <strong><?= htmlspecialchars($comment['username']) ?></strong><br> <!-- autor -->
+        <?= nl2br(htmlspecialchars($comment['content'])) ?><br> <!-- obsah -->
+        <small><?= $comment['created_at'] ?></small> <!-- datum -->
 
+        <!-- úprava/mazání -->
         <?php if (
             isset($_SESSION['user']) &&
             ($_SESSION['user']['id'] === $comment['user_id'] || $_SESSION['user']['role'] === 'admin')
@@ -49,5 +51,6 @@ foreach ($comments as $comment): ?>
     </form>
 </div>
 <?php else: ?>
+    <!-- pokud uživatel není přihlášen, výzva k přihlášení -->
     <p><a href="<?= BASE_URL ?>index.php?url=auth/login">Přihlas se</a>, abys mohl komentovat.</p>
 <?php endif; ?>

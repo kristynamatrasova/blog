@@ -1,7 +1,7 @@
 <?php
 class PageController extends Controller {
-    public function stat1() {
-        $this->view('pages/stat1');
+    public function stat1() { //načte a zobrazí
+        $this->view('pages/stat1'); //načítá odpovídající šablony
     }
     public function stat2() {
         $this->view('pages/stat2');

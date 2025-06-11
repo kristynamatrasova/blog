@@ -1,6 +1,7 @@
 <?php $viewPath = __FILE__; ?>
 <h1>Bioinformatický portál</h1>
 
+<!-- Seznam statických článků  -->
 <section class="static-list">
   <h2>Články</h2>
   <article>
@@ -26,6 +27,8 @@
 
 <hr>
 
+
+<!-- nejnovější příspěvky -->
 <h2>Nejnovější příspěvky</h2>
 
 <?php foreach ($articles as $article): ?>

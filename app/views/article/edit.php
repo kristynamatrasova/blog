@@ -1,8 +1,8 @@
 <?php $viewPath = __FILE__; ?>
-<h2>Upravit článek</h2>
+<h2>Upravit příspěvek</h2>
 
 <form method="post">
-    <label>Nadpis článku:</label><br>
+    <label>Nadpis příspěvku:</label><br>
     <input type="text" name="title" value="<?= htmlspecialchars($article['title']) ?>" required><br><br>
 
     <label>Obsah:</label><br>

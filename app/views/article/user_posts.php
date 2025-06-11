@@ -1,9 +1,13 @@
 <?php $viewPath = __FILE__; ?>
 <h1>Všechny příspěvky od uživatelů</h1>
 
+
+<!-- Pokud nejsou žádné články, zobrazí se hláška -->
 <?php if (empty($articles)): ?>
     <p>Žádné příspěvky zatím nebyly přidány.</p>
-<?php else: ?>
+
+<!-- zobrazí v seznamu -->
+    <?php else: ?>
     <?php foreach ($articles as $article): ?>
         <div class="article-preview">
             <h3>

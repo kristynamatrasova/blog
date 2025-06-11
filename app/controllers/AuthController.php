@@ -1,25 +1,28 @@
 <?php
 class AuthController extends Controller {
+    
+    //registrace nového uživatele
     public function register() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') { //POST kontroluje, zda uživatel odeslal formulář
             $username = $_POST['username'];
             $email = $_POST['email'];
-            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+            $password = password_hash($_POST['password'], PASSWORD_BCRYPT); //hasheuje heslo
             
-            User::create($username, $email, $password);
-            header('Location: /blog/public/index.php?url=auth/login');
+            User::create($username, $email, $password); //vytváří nového uživatele
+            header('Location: /blog/public/index.php?url=auth/login'); //přeměrování na přihlašovací formulář
             exit;
         }
 
         $this->view('auth/register');
     }
 
+    //přihlášení uživatele
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $user = User::findByUsername($_POST['username']);
+            $user = User::findByUsername($_POST['username']); //načtení uživatele podle jména
 
-            if ($user && password_verify($_POST['password'], $user['password'])) {
-                $_SESSION['user'] = $user;
+            if ($user && password_verify($_POST['password'], $user['password'])) { //pokud je nalezen uživatel a zda odpovídá heslo
+                $_SESSION['user'] = $user; //uživatel uložen do session a označen jako přihlášený
                 header('Location: /blog/public/index.php?url=article/index');
                 exit;
             } else {
@@ -27,11 +30,12 @@ class AuthController extends Controller {
             }
         }
 
-        $this->view('auth/login');
+        $this->view('auth/login'); // zobrazí přihlašovací formulář
     }
 
+    //odhlášení uživatele
     public function logout() {
-        session_destroy();
+        session_destroy(); //zruší sessiom, uživatel odhlášen
         header('Location: /blog/public/index.php?url=auth/login');
     }
 }
