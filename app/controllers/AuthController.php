@@ -5,7 +5,9 @@ class AuthController extends Controller {
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') { //POST kontroluje, zda uživatel odeslal formulář
             $username = $_POST['username'];
-            $email = $_POST['email'];
+            $email = trim($_POST['email']);
+            $email = $email !== '' ? $email : null;
+
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT); //hasheuje heslo
             
             User::create($username, $email, $password); //vytváří nového uživatele

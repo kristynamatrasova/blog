@@ -24,15 +24,5 @@ class UserController extends Controller {
         $this->view('user/my_comments', ['comments' => $comments]);
     }
 
-    //změna hesla
-    public function changePassword() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') { //požadavek na změnu hesla
-            $newPassword = password_hash($_POST['password'], PASSWORD_BCRYPT); //nové heslo
-            User::updatePassword($_SESSION['user']['id'], $newPassword); //modelová metoda uloží nové heslo
-            echo "Heslo změněno.";
-            exit;
-        }
-
-        $this->view('user/change_password');
-    }
+   
 }

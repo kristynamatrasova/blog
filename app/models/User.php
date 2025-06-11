@@ -7,7 +7,7 @@ class User extends Model {
     }
 
     //registrace nového uživatele
-    public static function create($username, $email, $password) {
+    public static function create($username, $email = null, $password) {
         self::execute("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", [$username, $email, $password]);
     }
 
@@ -16,8 +16,5 @@ class User extends Model {
         return self::queryOne("SELECT * FROM users WHERE id = ?", [$id]);
     }
 
-    //změna hesla
-    public static function updatePassword($id, $password) {
-        self::execute("UPDATE users SET password = ? WHERE id = ?", [$password, $id]);
-    }
+   
 }

@@ -3,4 +3,4 @@
 <p><strong>Uživatelské jméno:</strong> <?= htmlspecialchars($user['username']) ?></p>
 <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
 <p><strong>Role:</strong> <?= htmlspecialchars($user['role']) ?></p>
-<p><a href="<?= BASE_URL ?>index.php?url=user/changePassword">Změnit heslo</a></p>
+
