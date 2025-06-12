@@ -23,3 +23,6 @@ V neposlední řadě se bioinformatika uplatňuje i v oblasti struktury a funkce
 <p>
 Závěrem lze říci, že bioinformatika není jen technický obor – je to most mezi daty a biologickým poznáním. Umožňuje nám rozumět životním procesům na molekulární úrovni, hledat příčiny nemocí a navrhovat efektivní léčbu. V dnešním vědeckém světě se bez ní neobejdeme.
 </p>
+
+<img src="<?= BASE_URL ?>img/gen.png" alt="Vliv mutace na expresi genu"
+     style="max-width: 70%; height: 20%; margin-top: 20px; border-radius: 8px;">
